@@ -3,15 +3,12 @@ package nu.mine.kino;
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.web.filter.CharacterEncodingFilter;
-
-import net.arnx.jsonic.web.RESTServlet;
 
 @SpringBootApplication
 @ServletComponentScan
@@ -38,20 +35,22 @@ public class Main implements ServletContextInitializer {
         cef.setInitParameter("encoding", "UTF-8");
         cef.setInitParameter("forceEncoding", "true");
 
-        Dynamic restServlet = context.addServlet("restServlet",
-                RESTServlet.class);
-        restServlet.addMapping("*.json");
-        String config = "            {" + "                'debug': true,"
-                + "                'mappings': {"
-                + "                  '/hogehoge/fugafuga/{key}.{ext}':{ 'target':'nu.mine.kino.web.Example','verb': [ 'GET','POST' ,'PUT','DELETE']}"
-                + "                },"
-                + "               'processor':{'prettyPrint':true},"
-                + "               'definitions':{"
-                + "                 'key':'[^/()]+',"
-                + "                 'address':'[^/()]+'" + "               },"
-                + "               errors:{"
-                + "               }" + "            }";
-        restServlet.setInitParameter("config", config);
+        // Dynamic restServlet = context.addServlet("restServlet",
+        // RESTServlet.class);
+        // restServlet.addMapping("*.json");
+        // String config = " {" + " 'debug': true,"
+        // + " 'mappings': {"
+        // + " '/hogehoge/fugafuga/{key}.{ext}':{
+        // 'target':'nu.mine.kino.web.Example','verb': [ 'GET','POST'
+        // ,'PUT','DELETE']}"
+        // + " },"
+        // + " 'processor':{'prettyPrint':true},"
+        // + " 'definitions':{"
+        // + " 'key':'[^/()]+',"
+        // + " 'address':'[^/()]+'" + " },"
+        // + " errors:{"
+        // + " }" + " }";
+        // restServlet.setInitParameter("config", config);
 
     }
 }
